@@ -1,3 +1,9 @@
+
 * text=auto
+
+
+*.unity binary
+*.meta binary
+
+*.cs text eol=lf
 *.sh text eol=lf
-*.bat text eol=crlf
