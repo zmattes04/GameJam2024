@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638667211800000000
-    m_Hash: 1010242877
+      ticks: 638667241980000000
+    m_Hash: 341510610
   m_LockFileStatus:
     m_FilePath: /Users/zachmattes/GameJam2024/GameJam2024/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638667211830000000
-    m_Hash: 3192274956
+      ticks: 638667241980000000
+    m_Hash: 3213593670
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -247,7 +247,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.16
+    version: 3.0.34
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -280,12 +280,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.1
     nextVersion: 
-- packageId: com.unity.ide.rider@3.0.16
+- packageId: com.unity.ide.rider@3.0.34
   testable: 0
   isDirectDependency: 1
-  version: 3.0.16
+  version: 3.0.34
   source: 1
-  resolvedPath: /Users/zachmattes/GameJam2024/GameJam2024/Library/PackageCache/com.unity.ide.rider@3.0.16
+  resolvedPath: /Users/zachmattes/GameJam2024/GameJam2024/Library/PackageCache/com.unity.ide.rider@3.0.34
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -294,7 +294,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: asset
+  type: 
   description: The JetBrains Rider Editor package provides an integration for using
     the JetBrains Rider IDE as a code editor for Unity. It adds support for generating
     .csproj files for code completion and auto-discovery of installations.
@@ -376,15 +376,15 @@ m_ResolvedPackages:
     isDefault: 1
     capabilities: 7
     configSource: 0
-  hideInEditor: 0
+  hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638011833630000000
-  documentationUrl: 
+  datePublishedTicks: 638651995659960000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: 9b718d58b8f7a34e564f2c79af6d2ca788e929d4
+    revision: 700eb86ebc7b9f72d760e2e1c740fc5e2fd6a54b
     path: 
   unityLifecycle:
     version: 3.0.16
