@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Assets/BoardTilt.cs" />
     <Compile Include="Assets/SphereMoves.cs" />
-    <Compile Include="Assets/gameEnd.cs" />
     <Compile Include="Assets/GameOver.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
