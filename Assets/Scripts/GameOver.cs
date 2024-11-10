@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
             Debug.Log("Game Over!");
 
             
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

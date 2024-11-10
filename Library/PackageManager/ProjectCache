@@ -13,10 +13,18 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638667241980000000
-    m_Hash: 3213593670
+      ticks: 638668057320000000
+    m_Hash: 2757884720
 m_EmbeddedPackageManifests:
-  m_ManifestsStatus: {}
+  m_ManifestsStatus:
+    /Users/zachmattes/GameJam2024/GameJam2024/Packages/co.parabox.csg/package.json:
+      m_FilePath: /Users/zachmattes/GameJam2024/GameJam2024/Packages/co.parabox.csg/package.json
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 638668056950000000
+      m_Hash: 4159793352
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: /Users/zachmattes/GameJam2024/GameJam2024/Packages
@@ -2856,6 +2864,52 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.0.0
+    nextVersion: 
+- packageId: co.parabox.csg@file:/Users/zachmattes/GameJam2024/GameJam2024/Packages/co.parabox.csg
+  testable: 1
+  isDirectDependency: 1
+  version: 2.0.0
+  source: 3
+  resolvedPath: /Users/zachmattes/GameJam2024/GameJam2024/Packages/co.parabox.csg
+  assetPath: Packages/co.parabox.csg
+  name: co.parabox.csg
+  displayName: pb_CSG
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A C# port of CSG.js by Evan W (http://evanw.github.io/csg.js/).
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
     nextVersion: 
 - packageId: com.unity.modules.subsystems@1.0.0
   testable: 0

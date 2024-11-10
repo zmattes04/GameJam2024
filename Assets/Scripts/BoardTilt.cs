@@ -13,7 +13,7 @@ public class BoardTilt : MonoBehaviour
     private void Update()
     {
         rotX = Input.GetAxis("Mouse Y") * verticalRotationSpeed;
-        rotY = Input.GetAxis("Mouse X") * horizontalRotationSpeed;
+        rotY = Input.GetAxis("Mouse X") * -horizontalRotationSpeed;
         rotation.x = rotX;
         rotation.y = 0;
         rotation.z = rotY;

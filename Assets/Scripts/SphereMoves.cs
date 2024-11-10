@@ -14,6 +14,10 @@ public class SphereMoves : MonoBehaviour
     {
         //Rigidbody component
         rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody is missing on the ball.");
+        }
     }
 
     private void Update()
