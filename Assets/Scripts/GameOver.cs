@@ -13,6 +13,8 @@ public class GameOver : MonoBehaviour
 
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
