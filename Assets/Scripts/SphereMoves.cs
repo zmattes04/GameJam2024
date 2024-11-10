@@ -5,35 +5,21 @@ using UnityEngine;
 
 public class SphereMoves : MonoBehaviour
 {
-    public Transform boardTransform; // Reference to the board
-    public float movementSpeed = 5f; // Speed
+    public float dropDelay = 2.0f; // Delay in seconds before the ball is dropped
+    private Rigidbody rb;
 
-    public Rigidbody rb;
-
-    private void Start()
+    void Start()
     {
-        //Rigidbody component
         rb = GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            Debug.LogError("Rigidbody is missing on the ball.");
-        }
+        StartCoroutine(DropBallAfterDelay()); // Start the coroutine at the start or call it when needed
     }
 
-    private void Update()
+    private IEnumerator DropBallAfterDelay()
     {
-        Vector3 boardTilt = boardTransform.rotation.eulerAngles;
+        // Wait for the specified delay
+        yield return new WaitForSeconds(dropDelay);
 
-        
-        float tiltX = (boardTilt.x > 180) ? boardTilt.x - 360 : boardTilt.x;
-        float tiltZ = (boardTilt.z > 180) ? boardTilt.z - 360 : boardTilt.z;
-
-        
-        Vector3 movementDirection = new Vector3(-tiltZ, 0, tiltX).normalized;
-
-        
-
-        rb.AddForce(movementDirection * movementSpeed, ForceMode.VelocityChange);
- 
+        // Enable gravity to drop the ball
+        rb.useGravity = true;
     }
 }
