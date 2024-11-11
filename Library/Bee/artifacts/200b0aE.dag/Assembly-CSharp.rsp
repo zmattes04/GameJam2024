@@ -360,6 +360,7 @@
 "Assets/Scripts/SoundEffectPlayer.cs"
 "Assets/Scripts/SoundEffectStruct.cs"
 "Assets/Scripts/SphereMoves.cs"
+"Assets/SpawnObstacles.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
