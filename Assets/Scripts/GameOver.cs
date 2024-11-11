@@ -8,13 +8,12 @@ public class GameOver : MonoBehaviour
         
         if (other.CompareTag("Ball"))
         {
-            
             Debug.Log("Game Over!");
-
-            
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        } else if (other.CompareTag("Obstacle")) {
+            Destroy(other.gameObject);
         }
     }
 }

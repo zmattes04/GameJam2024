@@ -25,15 +25,16 @@ public class SoundEffectPlayer : MonoBehaviour
         soundEffectPrevious = SoundEffectType.Score;
     }
 
-    public void PlaySoundEffect(SoundEffectType soundEffect/*, bool loop*/)
+    public void PlaySoundEffect(SoundEffectType soundEffect)
     {
         if (soundEffectSource.isPlaying)
         {
             if ((soundEffect != soundEffectPrevious) || activatedOnce)
             {
                 soundEffectSource.Stop();
-                soundEffectSource.clip = GetAudioClip(soundEffect).Audio;
                 soundEffectSource.volume = GetAudioClip(soundEffect).Volume;
+                Debug.Log(soundEffectSource.volume);
+                soundEffectSource.clip = GetAudioClip(soundEffect).Audio;
                 soundEffectSource.Play();
             }
         }

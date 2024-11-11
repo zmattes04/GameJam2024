@@ -16,6 +16,7 @@ public struct SoundEffectStruct
 
 public enum SoundEffectType
 {
-    Score
+    Score,
+    ObstaclesSpawn
 }
 

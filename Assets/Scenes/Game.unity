@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.011251181, g: 0.02076338, b: 0.07275459, a: 1}
+  m_IndirectSpecularColor: {r: 0.011303438, g: 0.020770222, b: 0.07275247, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &50205017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 50205018}
+  - component: {fileID: 50205019}
+  m_Layer: 0
+  m_Name: SpawnObstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &50205018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50205017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 512.3409, y: 332.99966, z: -6.856201}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &50205019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50205017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558653952f8c73b4391b82d257d32351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsList:
+  - {fileID: 5853675494241712228, guid: 3966a6f4cd1b8f544bca580751761e2b, type: 3}
+  - {fileID: 4588544929729929153, guid: d19fb91177734be409121fd67829cc2a, type: 3}
+  - {fileID: 9156701748317093934, guid: dfa0e902d73e95e409ef895a328d26ce, type: 3}
+  - {fileID: 9142294963018143076, guid: 06920d66186c0eb42851cb060528364b, type: 3}
+  spawnInterval: 8
+  spawnIntervalDecrement: 0.1
+  spawnIntervalMin: 4
+  currentMaxSpawnPerInterval: 2
+  maxMaxSpawnPerInterval: 8
+  minSpawnPerInterval: 1
+  yMin: 6
+  yMax: 9
+  xMin: -5
+  xMax: 5
+  zMin: -3
+  zMax: 3
+  soundEffectPlayer: {fileID: 1349150236}
+  soundEffectType: 1
 --- !u!1 &535870528
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,8 +893,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4f544ca7bbe087a4088f3844ab1ae81b, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -928,11 +991,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffectSource: {fileID: 1349150235}
-  soundEffectTypes: 00000000
+  soundEffectTypes: 0000000001000000
   audioClips:
   - {fileID: 8300000, guid: 4f544ca7bbe087a4088f3844ab1ae81b, type: 3}
+  - {fileID: 8300000, guid: 6272e19e039cf494a93deeb936846e9e, type: 3}
   volumes:
-  - 0.1
+  - 0.2
+  - 0.2
   loopInitial: 0
   activatedOnce: 1
 --- !u!4 &1349150237
@@ -1263,7 +1328,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3433973776899371041, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
       propertyPath: dropDelay
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3433973776899371041, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
       propertyPath: boardTransform
@@ -1276,6 +1341,14 @@ PrefabInstance:
     - target: {fileID: 3433973776899371066, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433973776899371070, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433973776899371070, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3433973776899371070, guid: 610a8769dc1c6f6448a7806a65030ba7, type: 3}
       propertyPath: m_CollisionDetection
