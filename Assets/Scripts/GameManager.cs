@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public static int score;
     public float minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles;
     public float minX_EdgeHoles, maxX_EdgeHoles, minZ_EdgeHoles, maxZ_EdgeHoles;
+    public AudioSource soundEffectSource;
+    public AudioSource gameMusicSource;
 
     void awake()
     {
@@ -36,6 +38,10 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
+        board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
+        soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
+        gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f); ;
 
         for (int i = 0; i < holeCountCenter; i++)
         {

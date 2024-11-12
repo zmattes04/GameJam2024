@@ -21,4 +21,12 @@ public class SphereMoves : MonoBehaviour
         while (Board.transform.rotation == Quaternion.identity);
         rb.useGravity = true;
     }
+
+    /*void FixedUpdate()
+    {
+        Vector3 newPosition = transform.position;
+        newPosition.y += yPosPhaseThrough;
+        transform.position = newPosition;
+        ballRigidbody.MovePosition(targetPosition);
+    }*/
 }

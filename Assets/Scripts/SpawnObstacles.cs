@@ -5,23 +5,14 @@ using UnityEngine;
 public class SpawnObstacles : MonoBehaviour
 {
     public List<GameObject> objectsList;
-    public float spawnInterval;
-    public float spawnIntervalDecrement;
-    public float spawnIntervalMin;
+    public float spawnInterval, spawnIntervalDecrement, spawnIntervalMin;
     public int currentMaxSpawnPerInterval;
     public int maxMaxSpawnPerInterval;
     public int minSpawnPerInterval;
-    public int yMin;
-    public int yMax;
-    public int xMin;
-    public int xMax;
-    public int zMin;
-    public int zMax;
+    public float yMin, yMax, xMin, xMax, zMin, zMax;
     private Transform spawnPosition;
 
-    private float xPos;
-    private float yPos;
-    private float zPos;
+    private float xPos, yPos, zPos;
     private float timer = 0f;
     private int objectsIndex;
 
