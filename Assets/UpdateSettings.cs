@@ -14,11 +14,6 @@ public class UpdateSettings : MonoBehaviour
 
     void Start()
     {
-        /*MainMenu.gameMusicVolume = PlayerPrefs.GetFloat("GameMusicVolume", 0.2f);
-        MainMenu.gameSFXVolume = PlayerPrefs.GetFloat("GameSFXVolume", 0.2f);
-        MainMenu.mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
-        MainMenu.menuMusicVolume = PlayerPrefs.GetFloat("MenuMusicVolume", 0.3f);*/
-
         gameMusicVolumeSlider.value = MainMenu.gameMusicVolume;
         gameSFXVolumeSlider.value = MainMenu.gameSFXVolume;
         mouseSensitivitySlider.value = MainMenu.mouseSensitivity;
@@ -52,6 +47,5 @@ public class UpdateSettings : MonoBehaviour
         MainMenu.mouseSensitivity = mouseSensitivitySlider.value;
         PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivitySlider.value);
         PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity"));
     }
 }

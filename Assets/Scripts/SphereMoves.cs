@@ -21,7 +21,7 @@ public class SphereMoves : MonoBehaviour
     private IEnumerator DropBallAfterDelay()
     {
         yield return new WaitForSeconds(dropDelay);
-        //while (Board.transform.rotation == Quaternion.identity);
+        while (Board.transform.rotation == Quaternion.identity);
         rb.useGravity = true;
     }
 

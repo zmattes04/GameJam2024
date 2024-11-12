@@ -18,9 +18,7 @@ public class MainMenu : MonoBehaviour
     {
         gameMusicVolume = PlayerPrefs.GetFloat("GameMusicVolume", 0.2f);
         gameSFXVolume = PlayerPrefs.GetFloat("GameSFXVolume", 0.2f);
-        Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity", 200f));
         mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
-        //Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity"));
         menuMusicVolume = PlayerPrefs.GetFloat("MenuMusicVolume", 0.3f);
         menuMusic.volume = menuMusicVolume;
     }
