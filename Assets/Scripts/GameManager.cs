@@ -71,6 +71,25 @@ public class GameManager : MonoBehaviour
         }
 
         highScore = highScores[0];
+        SaveHighScores();
+    }
+
+    public static void SaveHighScores()
+    {
+        for (int i = 0; i < highScoresLength; i++)
+        {
+            PlayerPrefs.SetInt("HighScore" + i, highScores[i]);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public static void LoadHighScores()
+    {
+        for (int i = 0; i < highScoresLength; i++)
+        {
+            highScores[i] = PlayerPrefs.GetInt("HighScore" + i, 0);
+        }
+        highScore = highScores[0];
     }
 }
 

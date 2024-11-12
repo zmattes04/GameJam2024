@@ -11,6 +11,7 @@ public class ScoreDisplay : MonoBehaviour
     {
         scoreText.text = $"Last Score: {GameManager.score}";;
         highScoreText.text = "High Scores\n";
+        GameManager.LoadHighScores();
 
         for (int i = 0; i < GameManager.highScoresLength; i++)
         {
