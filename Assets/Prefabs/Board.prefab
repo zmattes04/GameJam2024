@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfcf81d817df0545bd0f8f2bf9f7c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -5
-  maxX: 5
-  minZ: -2.5
-  maxZ: 2.5
+  minX: -4
+  maxX: 4
+  minZ: -1.7
+  maxZ: 1.7
   holePositions: []

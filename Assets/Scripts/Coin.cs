@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Coin : MonoBehaviour
 {
-    public int score = 0;
     public float xMin = -10f;
     public float xMax = 10f;
     public float zMin = -10f;
@@ -13,8 +12,8 @@ public class Coin : MonoBehaviour
     public TMP_Text highScoreText;
     public SoundEffectPlayer soundEffectPlayer;
     public SoundEffectType soundEffectType;
-    public GenerateHoles generateHolesScript;  // Reference to GenerateHoles script
-    public float minDistanceFromHole = 1.5f;   // Minimum safe distance from holes
+    public GenerateHoles generateHolesScript;
+    public float minDistanceFromHole = 1.5f;
 
     void Start()
     {
@@ -25,33 +24,32 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
-            score++;
-            if (score > GameManager.highScore)
+            GameManager.score++;
+            if (GameManager.score > GameManager.highScore)
             {
-                GameManager.UpdateHighScore(score, highScoreText);
-                PlayerPrefs.SetInt("HighScore", score);
+                GameManager.UpdateHighScore(GameManager.score, highScoreText);
+                PlayerPrefs.SetInt("HighScore", GameManager.score);
                 PlayerPrefs.Save();
             }
-            Debug.Log("Score: " + score);
+            Debug.Log("Score: " + GameManager.score);
 
             Vector3 newPosition;
             do
             {
-
                 float randomX = Random.Range(xMin, xMax);
                 float randomZ = Random.Range(zMin, zMax);
                 newPosition = new Vector3(randomX, transform.position.y, randomZ);
             } while (!IsSafePosition(newPosition));
 
             transform.position = newPosition;
-            scoreText.text = "Score: " + score;
+            scoreText.text = "Score: " + GameManager.score;
             soundEffectPlayer.PlaySoundEffect(soundEffectType);
         }
-        PlayerPrefs.SetInt("Score", score);
+        PlayerPrefs.SetInt("Score", GameManager.score);
         PlayerPrefs.Save();
     }
 
-    // Check if the generated position is at a safe distance from all holes
+
     private bool IsSafePosition(Vector3 position)
     {
         List<Vector3> holePositions = generateHolesScript.getHolePositions();
@@ -64,9 +62,5 @@ public class Coin : MonoBehaviour
             }
         }
         return true;
-    }
-    public int getscore()
-    {
-        return score;
     }
 }
