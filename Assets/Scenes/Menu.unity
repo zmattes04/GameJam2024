@@ -2071,6 +2071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 154916250}
   settingsMenu: {fileID: 246323739}
+  menuMusic: {fileID: 1200314743}
 --- !u!1 &1076439660
 GameObject:
   m_ObjectHideFlags: 0

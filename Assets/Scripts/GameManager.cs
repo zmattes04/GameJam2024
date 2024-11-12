@@ -39,8 +39,13 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity", 200f));
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
+        Debug.Log(board.GetComponent<BoardTilt>().verticalRotationSpeed);
+        Debug.Log(board.GetComponent<BoardTilt>().horizontalRotationSpeed);
+        
+
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
         gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f); ;
 

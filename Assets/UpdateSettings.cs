@@ -10,53 +10,48 @@ public class UpdateSettings : MonoBehaviour
     public Slider gameSFXVolumeSlider;
     public Slider mouseSensitivitySlider;
     public AudioSource menuMusic;
-    public static float menuMusicVolume;
-    public static float gameMusicVolume;
-    public static float gameSFXVolume;
-    public static float mouseSensitivity;
 
 
     void Start()
     {
-        gameMusicVolume = PlayerPrefs.GetFloat("GameMusicVolume", 0.2f);
-        gameSFXVolume = PlayerPrefs.GetFloat("GameSFXVolume", 0.2f);
-        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
-        menuMusicVolume = PlayerPrefs.GetFloat("MenuMusicVolume", 0.3f);
+        /*MainMenu.gameMusicVolume = PlayerPrefs.GetFloat("GameMusicVolume", 0.2f);
+        MainMenu.gameSFXVolume = PlayerPrefs.GetFloat("GameSFXVolume", 0.2f);
+        MainMenu.mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
+        MainMenu.menuMusicVolume = PlayerPrefs.GetFloat("MenuMusicVolume", 0.3f);*/
 
-        gameMusicVolumeSlider.value = gameMusicVolume;
-        gameSFXVolumeSlider.value = gameSFXVolume;
-        mouseSensitivitySlider.value = mouseSensitivity;
-        menuMusicVolumeSlider.value = menuMusicVolume;
-
-        menuMusic.volume = menuMusicVolume;
+        gameMusicVolumeSlider.value = MainMenu.gameMusicVolume;
+        gameSFXVolumeSlider.value = MainMenu.gameSFXVolume;
+        mouseSensitivitySlider.value = MainMenu.mouseSensitivity;
+        menuMusicVolumeSlider.value = MainMenu.menuMusicVolume;
     }
     
     public void UpdateMenuMusicVolume()
     {
-        menuMusicVolume = menuMusicVolumeSlider.value;
-        menuMusic.volume = menuMusicVolume;
+        MainMenu.menuMusicVolume = menuMusicVolumeSlider.value;
+        menuMusic.volume = MainMenu.menuMusicVolume;
         PlayerPrefs.SetFloat("MenuMusicVolume", menuMusicVolumeSlider.value);
         PlayerPrefs.Save();
     }
 
     public void UpdateGameMusicVolume()
     {
-        gameMusicVolume = gameMusicVolumeSlider.value;
-        PlayerPrefs.SetFloat("GameMusicVolume", gameMusicVolume);
+        MainMenu.gameMusicVolume = gameMusicVolumeSlider.value;
+        PlayerPrefs.SetFloat("GameMusicVolume", gameMusicVolumeSlider.value);
         PlayerPrefs.Save();
     }
 
     public void UpdateGameSFXVolume()
     {
-        gameSFXVolume = gameSFXVolumeSlider.value;
-        PlayerPrefs.SetFloat("GameSFXVolume", gameSFXVolume);
+        MainMenu.gameSFXVolume = gameSFXVolumeSlider.value;
+        PlayerPrefs.SetFloat("GameSFXVolume", gameSFXVolumeSlider.value);
         PlayerPrefs.Save();
     }
 
     public void UpdateMouseSensitivity()
     {
-        mouseSensitivity = mouseSensitivitySlider.value;
-        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivity);
+        MainMenu.mouseSensitivity = mouseSensitivitySlider.value;
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivitySlider.value);
         PlayerPrefs.Save();
+        Debug.Log(PlayerPrefs.GetFloat("MouseSensitivity"));
     }
 }
