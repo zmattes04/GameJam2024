@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public static int score;
     public float minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles;
     public float minX_EdgeHoles, maxX_EdgeHoles, minZ_EdgeHoles, maxZ_EdgeHoles;
+    public float minX, maxX, minZ, maxZ;
     public AudioSource soundEffectSource;
     public AudioSource gameMusicSource;
 
@@ -50,7 +51,23 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < holeCountEdges; i++)
         {
-            board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX_EdgeHoles, maxX_EdgeHoles, minZ_EdgeHoles, maxZ_EdgeHoles);
+            float randomValue = UnityEngine.Random.value;
+            if (randomValue < 0.25f)
+            {
+                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+            }
+            else
+            {
+                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+            }
         }
         score = 0;
     }

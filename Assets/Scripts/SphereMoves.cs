@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +7,15 @@ public class SphereMoves : MonoBehaviour
     public float dropDelay = 2.0f;
     private Rigidbody rb;
     public GameObject Board;
+    [SerializeField] private Transform boardTransform;
+    [SerializeField] private float raycastDistance = 1.0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(DropBallAfterDelay());
+        Board = GameObject.FindWithTag("Board");
+        boardTransform = Board.transform;
     }
 
     private IEnumerator DropBallAfterDelay()
@@ -22,11 +25,21 @@ public class SphereMoves : MonoBehaviour
         rb.useGravity = true;
     }
 
-    /*void FixedUpdate()
+  
+    void FixedUpdate()
     {
-        Vector3 newPosition = transform.position;
-        newPosition.y += yPosPhaseThrough;
-        transform.position = newPosition;
-        ballRigidbody.MovePosition(targetPosition);
-    }*/
+        if (Physics.Raycast(transform.position, Vector3.up, out RaycastHit hit, raycastDistance))
+        {
+            if (hit.transform == boardTransform)
+            {
+                ResetBallPosition();
+            }
+        }
+    }
+
+    void ResetBallPosition()
+    {
+        rb.MovePosition(new Vector3(transform.position.x, boardTransform.position.y + 0.5f, transform.position.z));
+        rb.velocity = Vector3.zero;
+    }
 }

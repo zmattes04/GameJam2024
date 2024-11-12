@@ -18,12 +18,17 @@ public class SpawnObstacles : MonoBehaviour
 
     public SoundEffectPlayer soundEffectPlayer;
     public SoundEffectType soundEffectType;
-
+    public int initialIndex;
+    private int objectIndex;
+    public int timesBeforeObjectIndexIncrements;
+    private int timesCounter;
 
     void Start()
     {
         spawnPosition = this.transform;
         timer = 0f;
+        objectIndex = initialIndex;
+        timesCounter = 0;
     }
 
     private void Update()
@@ -42,6 +47,15 @@ public class SpawnObstacles : MonoBehaviour
             {
                 currentMaxSpawnPerInterval++;
             }
+            timesCounter++;
+            if (timesCounter >= timesBeforeObjectIndexIncrements)
+            {
+                if (objectIndex < objectsList.Count - 1)
+                {
+                    objectIndex++;
+                }
+                timesCounter = 0;
+            }
         }
     }
 
@@ -51,7 +65,7 @@ public class SpawnObstacles : MonoBehaviour
 
         for (int i = 1; i <= numberToSpawn; i++)
         {
-            objectsIndex = Random.Range(0, objectsList.Count);
+            objectsIndex = Random.Range(0, objectIndex);
             xPos = Random.Range(xMin, xMax);
             yPos = Random.Range(yMin, yMax);
             zPos = Random.Range(zMin, zMax);
