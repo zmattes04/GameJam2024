@@ -66,18 +66,22 @@ public class GameManager : MonoBehaviour
             if (randomValue < 0.25f)
             {
                 board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+                Debug.Log("hole1");
             }
             else if (randomValue < 0.5f)
             {
                 board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+                Debug.Log("hole2");
             }
             else if (randomValue < 0.5f)
             {
                 board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+                Debug.Log("hole3");
             }
             else
             {
                 board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+                Debug.Log("hole4");
             }
         }
         gameOver = false;

@@ -18,10 +18,10 @@ public class SphereMoves : MonoBehaviour
         boardTransform = Board.transform;
     }
 
+
     private IEnumerator DropBallAfterDelay()
     {
         yield return new WaitForSeconds(dropDelay);
-        while (Board.transform.rotation == Quaternion.identity);
         rb.useGravity = true;
     }
 
