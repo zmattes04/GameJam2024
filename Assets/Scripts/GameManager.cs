@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static int highScoresLength = 10;
     public static int[] highScores = new int[highScoresLength];
     public static float[] highScoreTimes = new float[highScoresLength];
+    public static string[] highScoreNames = new string[highScoresLength];
     public static int highScore;
     public static int score;
     public float minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     public static float gameTimer = 0f;
     public TMP_Text timerText;
     private static bool gameOver;
+    public static string username;
 
     void awake()
     {
@@ -43,8 +45,9 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        
+
         // Load Settings
+        Debug.Log(username);
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         score = 0;
         gameTimer = 0f;
+        Debug.Log(username);
     }
 
     void Update()
@@ -105,6 +109,7 @@ public class GameManager : MonoBehaviour
         {
             highScores[highScoresLength - 1] = score;
             highScoreTimes[highScoresLength - 1] = gameTimer;
+            highScoreNames[highScoresLength - 1] = username;
 
             for (int i = 0; i < highScoresLength; i++)
             {
@@ -121,6 +126,10 @@ public class GameManager : MonoBehaviour
                         float tempTime = highScoreTimes[i];
                         highScoreTimes[i] = highScoreTimes[j];
                         highScoreTimes[j] = tempTime;
+
+                        string tempName = highScoreNames[i];
+                        highScoreNames[i] = highScoreNames[j];
+                        highScoreNames[j] = tempName;
                     }
                 }
             }
@@ -135,6 +144,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore" + i, highScores[i]);
             PlayerPrefs.SetFloat("HighScoreTime" + i, highScoreTimes[i]);
+            PlayerPrefs.SetString("HighScoreName" + i, highScoreNames[i]);
         }
         PlayerPrefs.Save();
     }
@@ -145,6 +155,7 @@ public class GameManager : MonoBehaviour
         {
             highScores[i] = PlayerPrefs.GetInt("HighScore" + i, 0);
             highScoreTimes[i] = PlayerPrefs.GetFloat("HighScoreTime" + i, 0);
+            highScoreNames[i] = PlayerPrefs.GetString("HighScoreName" + i, "");
         }
         highScore = highScores[0];
     }

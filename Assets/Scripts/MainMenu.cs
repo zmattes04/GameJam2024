@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class MainMenu : MonoBehaviour
@@ -13,6 +14,12 @@ public class MainMenu : MonoBehaviour
     public static float gameSFXVolume;
     public static float mouseSensitivity;
     public AudioSource menuMusic;
+    public TMP_InputField usernameText;
+
+    void Awake()
+    {
+        usernameText.text = PlayerPrefs.GetString("Username", "Enter username");
+    }
 
     void Start()
     {
@@ -20,12 +27,14 @@ public class MainMenu : MonoBehaviour
         gameSFXVolume = PlayerPrefs.GetFloat("GameSFXVolume", 0.2f);
         mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         menuMusicVolume = PlayerPrefs.GetFloat("MenuMusicVolume", 0.3f);
+        GameManager.username = PlayerPrefs.GetString("Username", "Username");
         menuMusic.volume = menuMusicVolume;
     }
 
     public void PlayGame()
     {
         SceneManager.LoadScene(1);
+        Debug.Log(GameManager.username);
     }
 
     public void OpenSettings()

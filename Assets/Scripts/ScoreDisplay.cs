@@ -19,7 +19,7 @@ public class ScoreDisplay : MonoBehaviour
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(GameManager.highScoreTimes[i]);
             string formattedTime = $"{timeSpan.Minutes}:{timeSpan.Seconds:D2}";
-            highScoreText.text += $"{GameManager.highScores[i]}     {formattedTime}\n";
+            highScoreText.text += $"{GameManager.highScoreNames[i]}: {GameManager.highScores[i]}     {formattedTime}\n";
         }
     }
 }
