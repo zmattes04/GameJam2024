@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        
         if (other.CompareTag("Ball"))
         {
+            Destroy(other.gameObject);
+            GameManager.UpdateHighScores();
             Debug.Log("Game Over!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene(2);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         } else if (other.CompareTag("Obstacle")) {
