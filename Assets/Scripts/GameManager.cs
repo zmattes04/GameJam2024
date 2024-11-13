@@ -44,16 +44,19 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         
+        // Load Settings
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
         gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f); ;
 
+        // Add center holes
         for (int i = 0; i < holeCountCenter; i++)
         {
             board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
         }
 
+        // Determine where the edge holes will go randomly and add
         for (int i = 0; i < holeCountEdges; i++)
         {
             float randomValue = UnityEngine.Random.value;
