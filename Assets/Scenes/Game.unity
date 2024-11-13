@@ -1233,7 +1233,7 @@ MonoBehaviour:
   hole: {fileID: 5546680766019404258, guid: d9aa6bb2536cffc4188f5c2c087d5d2d, type: 3}
   boardScale: {x: 1, y: 1, z: 1}
   holeCountCenter: 8
-  holeCountEdges: 4
+  holeCountEdges: 3
   minX_CenterHoles: -4
   maxX_CenterHoles: 4
   minZ_CenterHoles: -1.7
@@ -1242,10 +1242,10 @@ MonoBehaviour:
   maxX_EdgeHoles: 4
   minZ_EdgeHoles: -1.8
   maxZ_EdgeHoles: 1.8
-  minX: -5
-  maxX: 5
-  minZ: -2.5
-  maxZ: 2.5
+  minX: -4.8
+  maxX: 4.8
+  minZ: -2.4
+  maxZ: 2.4
   soundEffectSource: {fileID: 1349150235}
   gameMusicSource: {fileID: 1135001092}
   timerText: {fileID: 207090744}
@@ -1562,19 +1562,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.999962
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.008726558
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1586,7 +1586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6934675692972418613, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6db4c7e26a86a464e86400b55ee56537, type: 3}
