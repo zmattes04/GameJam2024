@@ -7,7 +7,7 @@ public class SpawnObstacles : MonoBehaviour
     public List<GameObject> objectsList;
     public float spawnInterval, spawnIntervalDecrement, spawnIntervalMin;
     public int currentMaxSpawnPerInterval;
-    public int maxMaxSpawnPerInterval;
+    public int maximumMaxSpawnPerInterval;
     public int minSpawnPerInterval;
     public float yMin, yMax, xMin, xMax, zMin, zMax;
     private Transform spawnPosition;
@@ -43,7 +43,7 @@ public class SpawnObstacles : MonoBehaviour
             {
                 spawnInterval -= spawnIntervalDecrement;
             }
-            if (currentMaxSpawnPerInterval <= maxMaxSpawnPerInterval)
+            if (currentMaxSpawnPerInterval <= maximumMaxSpawnPerInterval)
             {
                 currentMaxSpawnPerInterval++;
             }

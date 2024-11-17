@@ -186,11 +186,11 @@ MonoBehaviour:
   - {fileID: 5331374466915668080, guid: f6ac7426b35a6da47b3eb00d21546b4b, type: 3}
   - {fileID: 6132659385386567701, guid: ce045803f65099143b01a6b4929c25c6, type: 3}
   - {fileID: 2683511146665631299, guid: e153db2b32255a24b9225eb90a94029b, type: 3}
-  spawnInterval: 8
+  spawnInterval: 10
   spawnIntervalDecrement: 0.1
   spawnIntervalMin: 4
-  currentMaxSpawnPerInterval: 2
-  maxMaxSpawnPerInterval: 8
+  currentMaxSpawnPerInterval: 1
+  maximumMaxSpawnPerInterval: 14
   minSpawnPerInterval: 1
   yMin: 6
   yMax: 9
@@ -200,7 +200,7 @@ MonoBehaviour:
   zMax: 3
   soundEffectPlayer: {fileID: 1349150236}
   soundEffectType: 1
-  initialIndex: 7
+  initialIndex: 8
   timesBeforeObjectIndexIncrements: 2
 --- !u!114 &50205020
 MonoBehaviour:
@@ -220,7 +220,7 @@ MonoBehaviour:
   spawnIntervalDecrement: 0
   spawnIntervalMin: 30
   currentMaxSpawnPerInterval: 1
-  maxMaxSpawnPerInterval: 1
+  maximumMaxSpawnPerInterval: 0
   minSpawnPerInterval: 1
   yMin: 4
   yMax: 4
@@ -1240,9 +1240,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1921222413}
   hole: {fileID: 5546680766019404258, guid: d9aa6bb2536cffc4188f5c2c087d5d2d, type: 3}
+  ramp: {fileID: 5546680766019404258, guid: d9aa6bb2536cffc4188f5c2c087d5d2d, type: 3}
   boardScale: {x: 1, y: 1, z: 1}
-  holeCountCenter: 8
-  holeCountEdges: 3
+  holeCountCenter: 0
+  holeCountEdges: 0
+  rampCountCenter: 3
+  rampCountEdges: 2
   minX_CenterHoles: -4
   maxX_CenterHoles: 4
   minZ_CenterHoles: -1.7

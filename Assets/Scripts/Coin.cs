@@ -44,7 +44,7 @@ public class Coin : MonoBehaviour
                 float randomX = Random.Range(xMin, xMax);
                 float randomZ = Random.Range(zMin, zMax);
                 newPosition = new Vector3(randomX, transform.position.y + highYIncrement, randomZ);
-            } while (!AdjustHeightToBoard());
+            } while (!AdjustHeightToBoard() && IsSafePosition(newPosition));
              
             transform.position = newPosition;
             scoreText.text = "Score: " + GameManager.score;
@@ -52,6 +52,21 @@ public class Coin : MonoBehaviour
         }
         PlayerPrefs.SetInt("Score", GameManager.score);
         PlayerPrefs.Save();
+    }
+
+
+    private bool IsSafePosition(Vector3 position)
+    {
+        List<Vector3> holePositions = generateHolesScript.getHolePositions();
+        foreach (Vector3 holePosition in holePositions)
+        {
+            float distance = Vector3.Distance(position, holePosition);
+            if (distance < minDistanceFromHole)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 

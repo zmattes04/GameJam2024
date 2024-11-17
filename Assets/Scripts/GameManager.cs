@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject board;
     public GameObject hole;
+    public GameObject ramp;
     public Vector3 boardScale;
     public int holeCountCenter;
     public int holeCountEdges;
+    public int rampCountCenter;
+    public int rampCountEdges;
     public static int highScoresLength = 10;
     public static int[] highScores = new int[highScoresLength];
     public static float[] highScoreTimes = new float[highScoresLength];
@@ -68,22 +71,45 @@ public class GameManager : MonoBehaviour
             if (randomValue < 0.25f)
             {
                 boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
-                Debug.Log("hole1");
             }
             else if (randomValue < 0.5f)
             {
                 boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
-                Debug.Log("hole2");
             }
             else if (randomValue < 0.5f)
             {
                 boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
-                Debug.Log("hole3");
             }
             else
             {
                 boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
-                Debug.Log("hole4");
+            }
+        }
+
+        for (int i = 0; i < rampCountCenter; i++)
+        {
+            boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+        }
+
+
+        for (int i = 0; i < rampCountEdges; i++)
+        {
+            float randomValue = UnityEngine.Random.value;
+            if (randomValue < 0.25f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+            }
+            else
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
             }
         }
         gameOver = false;
