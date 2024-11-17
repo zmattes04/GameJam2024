@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class GenerateHoles : MonoBehaviour
 {
-    private List<Vector3> holePositions = new List<Vector3>();
+    private List<GameObject> holePositions = new List<GameObject>();
+    public GameObject holePositionPrefab;
 
     public GameObject PerformSubtraction(GameObject targetObject, GameObject subtractMeshObject, Vector3 scale, float minX, float maxX, float minZ, float maxZ)
     {
@@ -21,7 +22,8 @@ public class GenerateHoles : MonoBehaviour
         while (Vector3.Distance(newPosition, Vector3.zero) < minDistanceFromBall);
 
         subtractMeshObject.transform.position = newPosition;
-        holePositions.Add(newPosition);
+        GameObject holeObject = Instantiate(holePositionPrefab, newPosition, Quaternion.identity);
+        holePositions.Add(holeObject);
 
         Model result = CSG.Subtract(targetObject, subtractMeshObject);
         targetObject.GetComponent<MeshFilter>().sharedMesh = result.mesh;
@@ -32,7 +34,7 @@ public class GenerateHoles : MonoBehaviour
         return targetObject;
     }
 
-    public List<Vector3> getHolePositions()
+    public List<GameObject> getHolePositions()
     {
         return holePositions;
     }

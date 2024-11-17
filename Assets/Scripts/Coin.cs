@@ -15,6 +15,12 @@ public class Coin : MonoBehaviour
     public GenerateHoles generateHolesScript;
     public float minDistanceFromHole = 1.5f;
 
+    public float highYIncrement;
+    public float heightAboveBoard;
+    public string boardTag = "Board";
+
+    private Vector3 newPosition;
+
     void Start()
     {
         GameManager.UpdateHighScore(GameManager.highScore, highScoreText);
@@ -33,14 +39,13 @@ public class Coin : MonoBehaviour
             }
             Debug.Log("Score: " + GameManager.score);
 
-            Vector3 newPosition;
             do
             {
                 float randomX = Random.Range(xMin, xMax);
                 float randomZ = Random.Range(zMin, zMax);
-                newPosition = new Vector3(randomX, transform.position.y, randomZ);
-            } while (!IsSafePosition(newPosition));
-
+                newPosition = new Vector3(randomX, transform.position.y + highYIncrement, randomZ);
+            } while (!AdjustHeightToBoard());
+             
             transform.position = newPosition;
             scoreText.text = "Score: " + GameManager.score;
             soundEffectPlayer.PlaySoundEffect(soundEffectType);
@@ -50,17 +55,21 @@ public class Coin : MonoBehaviour
     }
 
 
-    private bool IsSafePosition(Vector3 position)
+    private bool AdjustHeightToBoard()
     {
-        List<Vector3> holePositions = generateHolesScript.getHolePositions();
-        foreach (Vector3 holePosition in holePositions)
+        RaycastHit hit;
+        // Cast a ray downward from a high point to detect the board
+        if (Physics.Raycast(newPosition + Vector3.up * highYIncrement, Vector3.down, out hit, Mathf.Infinity))
         {
-            float distance = Vector3.Distance(position, holePosition);
-            if (distance < minDistanceFromHole)
+            // Set the Y position to be just above the board surface
+            if (hit.collider.CompareTag(boardTag))
             {
-                return false;
+                newPosition.y = hit.point.y + heightAboveBoard;
+                Debug.Log("Hit");
+                return true;
             }
         }
-        return true;
+        Debug.Log("Missed.");
+        return false;
     }
 }

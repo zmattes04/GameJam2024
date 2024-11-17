@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7158986073689919654}
   - component: {fileID: 7117869310179720712}
   - component: {fileID: 4828297341360140991}
+  - component: {fileID: 1447775044722486894}
   m_Layer: 6
   m_Name: Coin
   m_TagString: Coin
@@ -111,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4933e761e4958d74da6087e6afcf45f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   xMin: -4
   xMax: 4
   zMin: -2
@@ -121,4 +121,22 @@ MonoBehaviour:
   soundEffectPlayer: {fileID: 0}
   soundEffectType: 0
   generateHolesScript: {fileID: 0}
-  minDistanceFromHole: 1.5
+  minDistanceFromHole: 2
+  highYIncrement: 10
+  heightAboveBoard: 0.5
+  boardLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1447775044722486894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2754747825902594797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9054a1abef5a3d646a53471ced240490, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: {x: 70, y: 0, z: 0}

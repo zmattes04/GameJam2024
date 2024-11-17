@@ -50,7 +50,7 @@ public class SpawnObstacles : MonoBehaviour
             timesCounter++;
             if (timesCounter >= timesBeforeObjectIndexIncrements)
             {
-                if (objectIndex < objectsList.Count - 1)
+                if (objectIndex < objectsList.Count)
                 {
                     objectIndex++;
                 }

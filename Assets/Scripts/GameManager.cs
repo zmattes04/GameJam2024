@@ -51,12 +51,14 @@ public class GameManager : MonoBehaviour
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
-        gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f); ;
+        gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f);
+
+        GameObject boardMesh = board.transform.GetChild(0).gameObject;
 
         // Add center holes
         for (int i = 0; i < holeCountCenter; i++)
         {
-            board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+            boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
         }
 
         // Determine where the edge holes will go randomly and add
@@ -65,22 +67,22 @@ public class GameManager : MonoBehaviour
             float randomValue = UnityEngine.Random.value;
             if (randomValue < 0.25f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
                 Debug.Log("hole1");
             }
             else if (randomValue < 0.5f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
                 Debug.Log("hole2");
             }
             else if (randomValue < 0.5f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
                 Debug.Log("hole3");
             }
             else
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
                 Debug.Log("hole4");
             }
         }
