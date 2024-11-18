@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1953757066745872857}
   - component: {fileID: 6230232781334290173}
   - component: {fileID: 1776217529837212846}
-  - component: {fileID: 8398086635851630630}
   m_Layer: 6
   m_Name: Cylinder.003
   m_TagString: Obstacle
@@ -99,22 +98,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6239881831769578202, guid: 3e4030691053a0e45a6003118a7b802a, type: 3}
---- !u!54 &8398086635851630630
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406562119348277842}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!1 &3458114957138187383
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +109,6 @@ GameObject:
   - component: {fileID: 313340600802862997}
   - component: {fileID: 6979874230031541589}
   - component: {fileID: 4322083074995215870}
-  - component: {fileID: 3375446291349297248}
   - component: {fileID: 9223000113974091720}
   m_Layer: 6
   m_Name: Cylinder.001
@@ -200,22 +182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &3375446291349297248
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3458114957138187383}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!64 &9223000113974091720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -242,7 +208,6 @@ GameObject:
   - component: {fileID: 8268387959579669959}
   - component: {fileID: 8786484709962571057}
   - component: {fileID: 2696574669070166973}
-  - component: {fileID: 7416696541084781609}
   m_Layer: 6
   m_Name: Cylinder.004
   m_TagString: Obstacle
@@ -329,22 +294,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6255687079079774844, guid: 3e4030691053a0e45a6003118a7b802a, type: 3}
---- !u!54 &7416696541084781609
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938363564009296190}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!1 &6132659385386567701
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6796008342224294575}
+  - component: {fileID: 3900781040381094423}
   m_Layer: 6
   m_Name: torpedoRed2
   m_TagString: Obstacle
@@ -368,9 +318,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132659385386567701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 423419058506215285}
@@ -380,7 +330,23 @@ Transform:
   - {fileID: 2417948765220017823}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!54 &3900781040381094423
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6132659385386567701}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1 &7738265463278844740
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +359,6 @@ GameObject:
   - component: {fileID: 1414853188306717953}
   - component: {fileID: 4190994536375387035}
   - component: {fileID: 2251549506979919}
-  - component: {fileID: 5275029451099905688}
   m_Layer: 6
   m_Name: Cylinder
   m_TagString: Obstacle
@@ -480,22 +445,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 3e4030691053a0e45a6003118a7b802a, type: 3}
---- !u!54 &5275029451099905688
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7738265463278844740}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
 --- !u!1 &8886743584478646866
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +457,6 @@ GameObject:
   - component: {fileID: 2765293713423993279}
   - component: {fileID: 3882087237626063295}
   - component: {fileID: 8821508862932612259}
-  - component: {fileID: 3600275443928569332}
   m_Layer: 6
   m_Name: Cylinder.002
   m_TagString: Obstacle
@@ -595,19 +543,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8691780276856062721, guid: 3e4030691053a0e45a6003118a7b802a, type: 3}
---- !u!54 &3600275443928569332
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8886743584478646866}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2

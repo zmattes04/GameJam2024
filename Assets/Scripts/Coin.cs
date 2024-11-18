@@ -44,7 +44,7 @@ public class Coin : MonoBehaviour
                 float randomX = Random.Range(xMin, xMax);
                 float randomZ = Random.Range(zMin, zMax);
                 newPosition = new Vector3(randomX, transform.position.y + highYIncrement, randomZ);
-            } while (!AdjustHeightToBoard() && IsSafePosition(newPosition));
+            } while (!AdjustHeightToBoard() || !IsSafePosition(newPosition));
              
             transform.position = newPosition;
             scoreText.text = "Score: " + GameManager.score;

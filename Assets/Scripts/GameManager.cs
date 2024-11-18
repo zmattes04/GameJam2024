@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject board;
-    public GameObject hole;
-    public GameObject ramp;
+    public List<GameObject> intrusions;
+    public List<GameObject> extrusions;
     public Vector3 boardScale;
     public int holeCountCenter;
     public int holeCountEdges;
@@ -61,55 +61,59 @@ public class GameManager : MonoBehaviour
         // Add center holes
         for (int i = 0; i < holeCountCenter; i++)
         {
-            boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+            int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
+            boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
         }
 
         // Determine where the edge holes will go randomly and add
         for (int i = 0; i < holeCountEdges; i++)
         {
+            int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
             float randomValue = UnityEngine.Random.value;
             if (randomValue < 0.25f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, minX_EdgeHoles, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, maxX, minZ, minZ_EdgeHoles);
             }
             else
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
             }
         }
 
         for (int i = 0; i < rampCountCenter; i++)
         {
-            boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
+            boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
         }
 
 
         for (int i = 0; i < rampCountEdges; i++)
         {
             float randomValue = UnityEngine.Random.value;
+            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
             if (randomValue < 0.25f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, minX_EdgeHoles, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, minZ, minZ_EdgeHoles);
             }
             else
             {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, ramp, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
             }
         }
         gameOver = false;
