@@ -18,9 +18,9 @@ TagManager:
   - Ball
   - Obstacles
   - Board
-  - ObstacleDeletion
-  - GameOver
   - Coin
+  - GameOver
+  - DeleteObstacles
   - 
   - 
   - 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3902711931174454662}
   - component: {fileID: 2443381413676292357}
   - component: {fileID: 2443381413676292356}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: road4
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
