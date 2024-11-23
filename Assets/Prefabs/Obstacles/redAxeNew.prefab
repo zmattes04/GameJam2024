@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8951523615872449840}
   - component: {fileID: 2818217922959721883}
   - component: {fileID: 7001668127328969171}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807320439462873802}
   - component: {fileID: 4814082278190743911}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: redAxeNew
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 4217346274111001050}
   - component: {fileID: 2970330846897205722}
   - component: {fileID: 7742587294097305815}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1100528221590377828}
   - component: {fileID: 2796219421812857854}
   - component: {fileID: 2200349684376198101}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

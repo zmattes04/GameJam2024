@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6685230660914251385}
   - component: {fileID: 9051235887354260340}
   - component: {fileID: 3251408808464403129}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cone
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2385001185351085685}
   - component: {fileID: 6061620913544164010}
   - component: {fileID: 5163067864680604049}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7824387473435050894}
   - component: {fileID: 3689461987481533337}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: turret3
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3112008408595634783}
   - component: {fileID: 9113368229902592494}
   - component: {fileID: 5995967797270054958}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cone.001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

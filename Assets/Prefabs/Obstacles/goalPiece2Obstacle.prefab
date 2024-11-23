@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 160381790655913052}
   - component: {fileID: 1583120557440631003}
   - component: {fileID: 1583120557440631002}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: goalPiece2Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

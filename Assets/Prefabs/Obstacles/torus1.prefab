@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5626751880166477128}
   - component: {fileID: 371641398319964168}
   - component: {fileID: 2890952289302385673}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: torus1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7117869310179720712}
   - component: {fileID: 4828297341360140991}
   - component: {fileID: 1447775044722486894}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Coin
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -124,9 +124,7 @@ MonoBehaviour:
   minDistanceFromHole: 2
   highYIncrement: 10
   heightAboveBoard: 0.5
-  boardLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  boardTag: Board
 --- !u!114 &1447775044722486894
 MonoBehaviour:
   m_ObjectHideFlags: 0

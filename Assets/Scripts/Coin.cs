@@ -37,7 +37,6 @@ public class Coin : MonoBehaviour
                 PlayerPrefs.SetInt("HighScore", GameManager.score);
                 PlayerPrefs.Save();
             }
-            Debug.Log("Score: " + GameManager.score);
 
             do
             {
@@ -80,11 +79,9 @@ public class Coin : MonoBehaviour
             if (hit.collider.CompareTag(boardTag))
             {
                 newPosition.y = hit.point.y + heightAboveBoard;
-                Debug.Log("Hit");
                 return true;
             }
         }
-        Debug.Log("Missed.");
         return false;
     }
 }

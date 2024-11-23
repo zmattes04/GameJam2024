@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 353605817288758287}
   - component: {fileID: 2525593429829935301}
   - component: {fileID: 353605817288758286}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ExtrusionGoalPiece1
   m_TagString: Board
   m_Icon: {fileID: 0}

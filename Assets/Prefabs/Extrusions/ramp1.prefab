@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7673037328459791041}
   - component: {fileID: 5591480080472247819}
   - component: {fileID: 627712936538503199}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ramp1
   m_TagString: Board
   m_Icon: {fileID: 0}

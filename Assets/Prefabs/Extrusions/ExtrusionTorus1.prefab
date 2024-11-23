@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8371493539801166465}
   - component: {fileID: 6037482449922131531}
   - component: {fileID: 5244879633356957597}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ExtrusionTorus1
   m_TagString: Board
   m_Icon: {fileID: 0}

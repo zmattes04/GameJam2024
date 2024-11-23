@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2888142438348623563}
   - component: {fileID: 6186441343685327969}
   - component: {fileID: 5052747791333506255}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Icosphere.001
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298934885987524498}
   - component: {fileID: 343498375353304058}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: turret5
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 3822718006215123632}
   - component: {fileID: 5322562199509147915}
   - component: {fileID: 4081302537258606476}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Icosphere
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 4224904892581659578}
   - component: {fileID: 6483563460157483208}
   - component: {fileID: 6848984882038292580}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Icosphere.002
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7397840457986383551}
   - component: {fileID: 6669889148032310609}
   - component: {fileID: 4934922330832332082}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Icosphere.003
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 9083862730040772892}
   - component: {fileID: 4764961889061231875}
   - component: {fileID: 1696850884717016214}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 2474100500314905189}
   - component: {fileID: 220398771005978472}
   - component: {fileID: 8367704831559556023}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cone
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

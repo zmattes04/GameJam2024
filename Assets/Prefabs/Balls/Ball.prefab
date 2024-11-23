@@ -131,3 +131,4 @@ MonoBehaviour:
   Board: {fileID: 0}
   boardTransform: {fileID: 0}
   raycastDistance: 1
+  teleportDistance: 0

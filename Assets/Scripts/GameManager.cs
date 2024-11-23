@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     private static bool gameOver;
     public static string username;
+    private static DynamicDifficulty dynamicDifficulty;
 
     void awake()
     {
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         // Load Settings
-        Debug.Log(username);
+        dynamicDifficulty = GetComponent<DynamicDifficulty>();
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
@@ -59,7 +60,8 @@ public class GameManager : MonoBehaviour
         GameObject boardMesh = board.transform.GetChild(0).gameObject;
 
         // Add center holes
-        for (int i = 0; i < holeCountCenter; i++)
+        Debug.Log("center holes: " + PlayerPrefs.GetInt("Difficulty", 1));
+        for (int i = 0; i < PlayerPrefs.GetInt("Difficulty", 1); i++)
         {
             int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
             boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
@@ -119,7 +121,6 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         score = 0;
         gameTimer = 0f;
-        Debug.Log(username);
     }
 
     void Update()
@@ -141,6 +142,7 @@ public class GameManager : MonoBehaviour
     public static void UpdateHighScores()
     {
         gameOver = true;
+        GameManager.dynamicDifficulty.AddScore(score);
         if (score > highScores[highScoresLength - 1])
         {
             highScores[highScoresLength - 1] = score;

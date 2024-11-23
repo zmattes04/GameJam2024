@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6216763987743399913}
   - component: {fileID: 5042302968987631593}
   - component: {fileID: 3294715161713921860}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7708474987781962352}
   - component: {fileID: 5304265183758213434}
   - component: {fileID: 3533515371052286222}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 7171062566460398423}
   - component: {fileID: 5336569024788747725}
   - component: {fileID: 5151205982013450626}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 187212853235426193}
   - component: {fileID: 705366782513810279}
   - component: {fileID: 7109139206327249817}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3347985999102608633}
   - component: {fileID: 3025529420590048017}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: squidObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 7726780172265641871}
   - component: {fileID: 2760725980850702507}
   - component: {fileID: 1897137143133417105}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 4782977718379975287}
   - component: {fileID: 9101874305760544360}
   - component: {fileID: 3474075310256718432}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 1223664847717020419}
   - component: {fileID: 5466584603251805096}
   - component: {fileID: 2558333254994815480}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 9170503484934858396}
   - component: {fileID: 2366173833595043740}
   - component: {fileID: 6252971220905939254}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: road2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

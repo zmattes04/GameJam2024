@@ -15,12 +15,12 @@ TagManager:
   - 
   - Water
   - UI
-  - Objects
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - Obstacles
+  - Board
+  - ObstacleDeletion
+  - GameOver
+  - Coin
   - 
   - 
   - 
