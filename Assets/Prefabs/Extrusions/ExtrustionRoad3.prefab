@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6366595299375063952}
   - component: {fileID: 9204873821117273946}
   - component: {fileID: 7529968383146478552}
+  - component: {fileID: 7364999177336575195}
   m_Layer: 8
   m_Name: ExtrustionRoad3
   m_TagString: Board
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7259445845166356111}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 3.1709442, y: 0.5, z: -1.2697744}
-  m_LocalScale: {x: 0.1, y: 1.2, z: 0.1}
+  m_LocalScale: {x: 0.1, y: 1.2, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,6 +96,19 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 40f47ccf4408d2b4bb8b71a74d1aa675, type: 3}
+--- !u!114 &7364999177336575195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259445845166356111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04670b05c08247f4794dc10c6a74a71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yPos: 0.4

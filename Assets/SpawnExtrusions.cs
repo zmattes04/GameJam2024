@@ -25,7 +25,8 @@ public class SpawnExtrusions : MonoBehaviour
         Debug.Log("numObjects: " + numObjects);
         for (int i = 0; i < numObjects; i++)
         {
-            int index = Random.Range(0, numObjects);
+            int index = Random.Range(0, objectsToSpawn.Count);
+            Debug.Log("index: " + index);
             SpawnObject(index);
         }
     }
@@ -33,7 +34,7 @@ public class SpawnExtrusions : MonoBehaviour
     private void SpawnObject(int index)
     {
         xPos = Random.Range(xMin, xMax);
-        yPos = Random.Range(yMin, yMax);
+        yPos = objectsToSpawn[index].GetComponent<ExtrusionYPos>().yPos;
         zPos = Random.Range(zMin, zMax);
         spawnPosition.position = new Vector3(xPos, yPos, zPos);
         GameObject spawnedObject = Instantiate(objectsToSpawn[index], spawnPosition.position, Quaternion.identity);
