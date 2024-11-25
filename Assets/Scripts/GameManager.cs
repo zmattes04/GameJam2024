@@ -8,10 +8,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject board;
-    public GameObject hole;
+    public List<GameObject> intrusions;
+    public List<GameObject> extrusions;
     public Vector3 boardScale;
     public int holeCountCenter;
     public int holeCountEdges;
+    public int rampCountCenter;
+    public int rampCountEdges;
     public static int highScoresLength = 10;
     public static int[] highScores = new int[highScoresLength];
     public static float[] highScoreTimes = new float[highScoresLength];
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     private static bool gameOver;
     public static string username;
+    private static DynamicDifficulty dynamicDifficulty;
 
     void awake()
     {
@@ -47,47 +51,76 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         // Load Settings
-        Debug.Log(username);
+        dynamicDifficulty = GetComponent<DynamicDifficulty>();
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
-        gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f); ;
+        gameMusicSource.volume = PlayerPrefs.GetFloat("GameMusicVolume", 0.3f);
+
+        GameObject boardMesh = board.transform.GetChild(0).gameObject;
 
         // Add center holes
-        for (int i = 0; i < holeCountCenter; i++)
+        Debug.Log("center holes: " + PlayerPrefs.GetInt("Difficulty", 1));
+        for (int i = 0; i < PlayerPrefs.GetInt("Difficulty", 1); i++)
         {
-            board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+            int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
+            boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
         }
 
         // Determine where the edge holes will go randomly and add
         for (int i = 0; i < holeCountEdges; i++)
         {
+            int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
             float randomValue = UnityEngine.Random.value;
             if (randomValue < 0.25f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, minX_EdgeHoles, minZ, maxZ);
-                Debug.Log("hole1");
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, minX_EdgeHoles, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
-                Debug.Log("hole2");
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
             }
             else if (randomValue < 0.5f)
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, minZ, minZ_EdgeHoles);
-                Debug.Log("hole3");
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, maxX, minZ, minZ_EdgeHoles);
             }
             else
             {
-                board.GetComponent<GenerateHoles>().PerformSubtraction(board, hole, boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
-                Debug.Log("hole4");
+                boardMesh.GetComponent<GenerateHoles>().PerformSubtraction(boardMesh, intrusions[intrusionsIndex], boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
+            }
+        }
+
+        for (int i = 0; i < rampCountCenter; i++)
+        {
+            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
+            boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
+        }
+
+
+        for (int i = 0; i < rampCountEdges; i++)
+        {
+            float randomValue = UnityEngine.Random.value;
+            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
+            if (randomValue < 0.25f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, minX_EdgeHoles, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
+            }
+            else if (randomValue < 0.5f)
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, minZ, minZ_EdgeHoles);
+            }
+            else
+            {
+                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
             }
         }
         gameOver = false;
         score = 0;
         gameTimer = 0f;
-        Debug.Log(username);
     }
 
     void Update()
@@ -109,6 +142,7 @@ public class GameManager : MonoBehaviour
     public static void UpdateHighScores()
     {
         gameOver = true;
+        GameManager.dynamicDifficulty.AddScore(score);
         if (score > highScores[highScoresLength - 1])
         {
             highScores[highScoresLength - 1] = score;

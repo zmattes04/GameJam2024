@@ -32,6 +32,34 @@ public class GenerateHoles : MonoBehaviour
         return targetObject;
     }
 
+    public GameObject PerformAddition(GameObject targetObject, GameObject addMeshObject, Vector3 scale, float minX, float maxX, float minZ, float maxZ)
+    {
+        Vector3 newPosition;
+        float xPos, zPos;
+        const float minDistanceFromBall = 1.0f;
+
+        do
+        {
+            xPos = Random.Range(minX, maxX);
+            zPos = Random.Range(minZ, maxZ);
+            newPosition = new Vector3(xPos, addMeshObject.transform.position.y, zPos);
+        }
+        while (Vector3.Distance(newPosition, Vector3.zero) < minDistanceFromBall);
+
+        addMeshObject.transform.position = newPosition;
+
+        Model result = CSG.Union(targetObject, addMeshObject);
+
+        targetObject.GetComponent<MeshFilter>().sharedMesh = result.mesh;
+        targetObject.GetComponent<MeshRenderer>().sharedMaterials = result.materials.ToArray();
+        targetObject.GetComponent<MeshCollider>().sharedMesh = null;
+        targetObject.GetComponent<MeshCollider>().sharedMesh = targetObject.GetComponent<MeshFilter>().sharedMesh;
+        targetObject.transform.localScale = scale;
+
+        return targetObject;
+    }
+
+
     public List<Vector3> getHolePositions()
     {
         return holePositions;

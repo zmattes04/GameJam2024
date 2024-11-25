@@ -9,6 +9,7 @@ public class SphereMoves : MonoBehaviour
     public GameObject Board;
     [SerializeField] private Transform boardTransform;
     [SerializeField] private float raycastDistance = 1.0f;
+    [SerializeField] private float teleportDistance = 1.0f;
 
     void Start()
     {
@@ -39,7 +40,7 @@ public class SphereMoves : MonoBehaviour
 
     void ResetBallPosition()
     {
-        rb.MovePosition(new Vector3(transform.position.x, boardTransform.position.y + 0.5f, transform.position.z));
+        rb.MovePosition(new Vector3(transform.position.x, boardTransform.position.y + 0.5f + teleportDistance, transform.position.z));
         rb.velocity = Vector3.zero;
     }
 }

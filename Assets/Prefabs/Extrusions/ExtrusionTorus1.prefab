@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2754747825902594797
+--- !u!1 &5244879633356957598
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7389142882470213372}
-  - component: {fileID: 1211495559282211711}
-  - component: {fileID: 7158986073689919654}
-  - component: {fileID: 7117869310179720712}
-  - component: {fileID: 4828297341360140991}
-  - component: {fileID: 1447775044722486894}
-  m_Layer: 9
-  m_Name: Coin
-  m_TagString: Coin
+  - component: {fileID: 4864554521983745316}
+  - component: {fileID: 8371493539801166465}
+  - component: {fileID: 6037482449922131531}
+  - component: {fileID: 5244879633356957597}
+  - component: {fileID: 8505915082718720788}
+  m_Layer: 8
+  m_Name: ExtrusionTorus1
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7389142882470213372
+--- !u!4 &4864554521983745316
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_GameObject: {fileID: 5244879633356957598}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.9178828, y: 0.3, z: -0.9216554}
+  m_LocalScale: {x: 0.4, y: 1, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!33 &1211495559282211711
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &8371493539801166465
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7158986073689919654
+  m_GameObject: {fileID: 5244879633356957598}
+  m_Mesh: {fileID: -8803937527578110353, guid: b9a0f271c40768c489be4c106da2a02f, type: 3}
+--- !u!23 &6037482449922131531
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
+  m_GameObject: {fileID: 5244879633356957598}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 243f28a5d16a7eb40914c044443f817d, type: 2}
+  - {fileID: 2100000, guid: e8aff678fcb094d41986e28a180e34a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,55 +85,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7117869310179720712
+--- !u!64 &5244879633356957597
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
+  m_GameObject: {fileID: 5244879633356957598}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &4828297341360140991
+  m_Mesh: {fileID: -8803937527578110353, guid: b9a0f271c40768c489be4c106da2a02f, type: 3}
+--- !u!114 &8505915082718720788
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
+  m_GameObject: {fileID: 5244879633356957598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4933e761e4958d74da6087e6afcf45f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 04670b05c08247f4794dc10c6a74a71c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: -4
-  xMax: 4
-  zMin: -2
-  zMax: 2
-  scoreText: {fileID: 0}
-  highScoreText: {fileID: 0}
-  soundEffectPlayer: {fileID: 0}
-  soundEffectType: 0
-  generateHolesScript: {fileID: 0}
-  minDistanceFromHole: 2
-  highYIncrement: 10
-  heightAboveBoard: 0.5
-  boardTag: Board
---- !u!114 &1447775044722486894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754747825902594797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9054a1abef5a3d646a53471ced240490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: {x: 70, y: 0, z: 0}
+  yPos: 0.45
