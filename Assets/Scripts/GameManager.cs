@@ -19,8 +19,13 @@ public class GameManager : MonoBehaviour
     public static int[] highScores = new int[highScoresLength];
     public static float[] highScoreTimes = new float[highScoresLength];
     public static string[] highScoreNames = new string[highScoresLength];
+    public static float[] highScoresAdjusted = new float[highScoresLength];
+    public static float[] highScoreAdjustedTimes = new float[highScoresLength];
+    public static string[] highScoreAdjustedNames = new string[highScoresLength];
     public static int highScore;
+    public static float highScoreAdjusted;
     public static int score;
+    public static float scoreAdjusted;
     public float minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles;
     public float minX_EdgeHoles, maxX_EdgeHoles, minZ_EdgeHoles, maxZ_EdgeHoles;
     public float minX, maxX, minZ, maxZ;
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
     private static bool gameOver;
     public static string username;
     private static DynamicDifficulty dynamicDifficulty;
+    public TMP_Text DifficultyText;
+    public TMP_Text DifficultyMultiplierText;
 
     void awake()
     {
@@ -52,6 +59,8 @@ public class GameManager : MonoBehaviour
 
         // Load Settings
         dynamicDifficulty = GetComponent<DynamicDifficulty>();
+        DifficultyMultiplierText.text = GameManager.dynamicDifficulty.scoreMultipliers[PlayerPrefs.GetInt("Difficulty", 1) - 1].ToString() + "x";
+        DifficultyText.text = "Difficulty: " + PlayerPrefs.GetInt("Difficulty", 1).ToString();
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
@@ -133,10 +142,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void UpdateScoreAdjusted()
+    {
+        scoreAdjusted = (float)score * GameManager.dynamicDifficulty.scoreMultipliers[PlayerPrefs.GetInt("Difficulty", 1) - 1];
+    }
+
     public static void UpdateHighScore(int score, TMP_Text highScoreText)
     {
         highScore = score;
         highScoreText.text = "High Score: " + highScore;
+    }
+
+    public static void UpdateHighScoreAdjusted(float scoreAdjusted, TMP_Text highScoreText)
+    {
+        highScoreAdjusted = scoreAdjusted;
+        highScoreText.text = "High Score W/ Multiplier: " + highScoreAdjusted;
     }
 
     public static void UpdateHighScores()
@@ -172,6 +192,37 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (scoreAdjusted > highScoresAdjusted[highScoresLength - 1])
+        {
+            highScoresAdjusted[highScoresLength - 1] = score;
+            highScoreAdjustedTimes[highScoresLength - 1] = gameTimer;
+            highScoreAdjustedNames[highScoresLength - 1] = username;
+
+            for (int i = 0; i < highScoresLength; i++)
+            {
+                for (int j = i + 1; j < highScoresLength; j++)
+                {
+                    if (highScoresAdjusted[i] < highScoresAdjusted[j])
+                    {
+                        // Swap high scores
+                        float tempScore = highScoresAdjusted[i];
+                        highScoresAdjusted[i] = highScoresAdjusted[j];
+                        highScoresAdjusted[j] = tempScore;
+
+                        // Swap associated times
+                        float tempTime = highScoreAdjustedTimes[i];
+                        highScoreAdjustedTimes[i] = highScoreAdjustedTimes[j];
+                        highScoreAdjustedTimes[j] = tempTime;
+
+                        string tempName = highScoreAdjustedNames[i];
+                        highScoreAdjustedNames[i] = highScoreAdjustedNames[j];
+                        highScoreAdjustedNames[j] = tempName;
+                    }
+                }
+            }
+        }
+        highScoreAdjusted = highScoresAdjusted[0];
         highScore = highScores[0];
         SaveHighScores();
     }
@@ -184,7 +235,15 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("HighScoreTime" + i, highScoreTimes[i]);
             PlayerPrefs.SetString("HighScoreName" + i, highScoreNames[i]);
         }
+
+        for (int i = 0; i < highScoresLength; i++)
+        {
+            PlayerPrefs.SetFloat("HighScoreAdjusted" + i, highScoresAdjusted[i]);
+            PlayerPrefs.SetFloat("HighScoreAdjustedTime" + i, highScoreAdjustedTimes[i]);
+            PlayerPrefs.SetString("HighScoreAdjustedName" + i, highScoreAdjustedNames[i]);
+        }
         PlayerPrefs.Save();
+
     }
 
     public static void LoadHighScores()
@@ -196,6 +255,14 @@ public class GameManager : MonoBehaviour
             highScoreNames[i] = PlayerPrefs.GetString("HighScoreName" + i, "");
         }
         highScore = highScores[0];
+
+        for (int i = 0; i < highScoresLength; i++)
+        {
+            highScoresAdjusted[i] = PlayerPrefs.GetInt("HighScoreAdjusted" + i, 0);
+            highScoreAdjustedTimes[i] = PlayerPrefs.GetFloat("HighScoreAdjustedTime" + i, 0);
+            highScoreAdjustedNames[i] = PlayerPrefs.GetString("HighScoreAdjustedName" + i, "");
+        }
+        highScoreAdjusted = highScoresAdjusted[0];
     }
 }
 

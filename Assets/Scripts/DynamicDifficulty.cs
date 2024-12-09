@@ -6,7 +6,9 @@ public class DynamicDifficulty : MonoBehaviour
 {
     private static List<int> scores = new List<int>(new int[MaxScores]);
     private const int MaxScores = 4;
-
+    private const int numDifficulties = 10;
+    private const float difficultyDivider = 3f;
+    public List<float> scoreMultipliers = new List<float>(new float[numDifficulties]);
     private int Difficulty;
 
     void Awake()
@@ -35,14 +37,12 @@ public class DynamicDifficulty : MonoBehaviour
         float average = 0;
         foreach (int score in scores)
         {
-            //Debug.Log("score: " + score);
             average += score;
         }
         average /= scores.Count;
-        //Debug.Log("avg: " + average);
 
         // Map average to a difficulty rating from 1 to 10
-        Difficulty = Mathf.Clamp(Mathf.CeilToInt(average / 3f), 1, 10);
+        Difficulty = Mathf.Clamp(Mathf.CeilToInt(average / difficultyDivider), 1, numDifficulties);
         Debug.Log("Difficulty " +  Difficulty);
         PlayerPrefs.SetInt("Difficulty", Difficulty);
     }
@@ -61,7 +61,6 @@ public class DynamicDifficulty : MonoBehaviour
         for (int i = 0; i < MaxScores; i++)
         {
             scores[i] = PlayerPrefs.GetInt("RecentScores" + i, 0);
-            //Debug.Log("Player Prefs: " + PlayerPrefs.GetInt("RecentScores" + i, 0));
         }
     }
 }

@@ -10,6 +10,8 @@ public class Coin : MonoBehaviour
     public float zMax = 10f;
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
+    public TMP_Text scoreAdjustedText;
+    public TMP_Text highScoreAdjustedText;
     public SoundEffectPlayer soundEffectPlayer;
     public SoundEffectType soundEffectType;
     public GenerateHoles generateHolesScript;
@@ -35,6 +37,15 @@ public class Coin : MonoBehaviour
             {
                 GameManager.UpdateHighScore(GameManager.score, highScoreText);
                 PlayerPrefs.SetInt("HighScore", GameManager.score);
+                PlayerPrefs.Save();
+            }
+            GameManager.UpdateScoreAdjusted();
+            scoreAdjustedText.text = "Score W/ Multiplier: " + GameManager.scoreAdjusted;
+
+            if (GameManager.scoreAdjusted > GameManager.highScoreAdjusted)
+            {
+                GameManager.UpdateHighScoreAdjusted(GameManager.scoreAdjusted, highScoreAdjustedText);
+                PlayerPrefs.SetFloat("HighScoreAdjusted", GameManager.scoreAdjusted);
                 PlayerPrefs.Save();
             }
 
