@@ -18,22 +18,52 @@ public class Coin : MonoBehaviour
     public float highYIncrement;
     public float heightAboveBoard;
     public string boardTag = "Board";
+    public int scoreIncrement;
 
     private Vector3 newPosition;
+    [SerializeField] private List<GameObject> particlePrefabs;
+    [SerializeField] int particleDivider;
+    [SerializeField] private AudioSource musicSource;
+
+    [SerializeField] private float R, G, B;
+    private Color currentColor = new Color(1f, 1f, 0f);
+    [SerializeField] float colorIncrement;
+
+    public CameraShake cameraShake;
+    public LightingControl lightingControl;
+    public TextShake textShake;
 
     void Start()
     {
-        GameManager.UpdateHighScore(GameManager.highScore, highScoreText);
+        GameManager.UpdateHighScore(GameManager.highScore, highScoreText, textShake, currentColor);
+        currentColor = new Color(R, G, B);
+        cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Update()
+    {
+        if (musicSource != null)
+        {
+            // Scale pitch with score: Higher score -> Faster music
+            musicSource.pitch = Mathf.Clamp(1.0f + (GameManager.score / 1000f), 1.0f, 2.0f);
+        }
+        else
+        {
+            Debug.LogWarning("Music AudioSource is not assigned!");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
-            GameManager.score++;
+            GameManager.score += scoreIncrement + GameManager.dynamicDifficulty.scoreMultipliers[PlayerPrefs.GetInt("Difficulty", 1) - 1];
+            lightingControl.FlashLights();
+            SpawnParticles();
+            cameraShake.Shake(0.5f, 0.3f);
             if (GameManager.score > GameManager.highScore)
             {
-                GameManager.UpdateHighScore(GameManager.score, highScoreText);
+                GameManager.UpdateHighScore(GameManager.score, highScoreText, textShake, currentColor);
                 PlayerPrefs.SetInt("HighScore", GameManager.score);
                 PlayerPrefs.Save();
             }
@@ -46,7 +76,7 @@ public class Coin : MonoBehaviour
             } while (!AdjustHeightToBoard() || !IsSafePosition(newPosition));
              
             transform.position = newPosition;
-            scoreText.text = "Score: " + GameManager.score;
+            GameManager.UpdateScore(GameManager.score, scoreText, textShake, currentColor);
             soundEffectPlayer.PlaySoundEffect(soundEffectType);
         }
         PlayerPrefs.SetInt("Score", GameManager.score);
@@ -83,5 +113,71 @@ public class Coin : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void SpawnParticles()
+    {
+        if (particlePrefabs.Count == 0)
+        {
+            Debug.LogWarning("No particle prefabs assigned!");
+            return;
+        }
+        // Update the current color
+        UpdateColorBasedOnScore();
+
+        // Updata all 4 particles colors
+        for (int i = 0; i < particlePrefabs.Count; i++)
+        {
+            ParticleSystemRenderer psRenderer = particlePrefabs[i].GetComponent<ParticleSystemRenderer>();
+
+            // Change particles color
+            if (psRenderer != null && psRenderer.sharedMaterial != null)
+            {
+                psRenderer.sharedMaterial.SetColor("_Color", currentColor);
+                psRenderer.sharedMaterial.SetColor("_EmissionColor", currentColor);
+            }
+            else
+            {
+                Debug.LogWarning("No material found on ParticleSystemRenderer.");
+            }
+        }
+
+        // Change the coin color
+        Renderer objectRenderer = GetComponent<Renderer>();
+        if (objectRenderer != null && objectRenderer.material != null)
+        {
+            objectRenderer.material.SetColor("_Color", currentColor);
+        }
+        else
+        {
+            Debug.LogWarning("No material found on GameObject Renderer.");
+        }
+        TrailRenderer trailRenderer = GetComponent<TrailRenderer>();
+        if (trailRenderer != null && trailRenderer.material != null)
+        {
+            trailRenderer.startColor = currentColor;
+        }
+        else
+        {
+            Debug.LogWarning("No material found on GameObject Renderer.");
+        }
+
+        // Spawn random particle effect
+        int index = Random.Range(0, particlePrefabs.Count - 1);
+        GameObject spawnedParticle =  Instantiate(particlePrefabs[index], transform.position, Quaternion.identity);
+    }
+
+    private void UpdateColorBasedOnScore()
+    {
+        if (G > 0.0f)
+        {
+            // Decrease G by increment until G reaches 0
+            G = Mathf.Max(0f, G - colorIncrement);
+        } else
+        {
+            // Increase B by increment until B reaches 1
+            B = Mathf.Min(1f, B + colorIncrement);
+        }
+        currentColor = new Color(R, G, B);
     }
 }

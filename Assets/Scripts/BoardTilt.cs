@@ -18,6 +18,9 @@ public class BoardTilt : MonoBehaviour
         rotation.y = 0;
         rotation.z = rotY;
         transform.Rotate(rotation * Time.deltaTime);
+        Vector3 currentRotation = transform.rotation.eulerAngles;
+        currentRotation.y = 0;
+        transform.rotation = Quaternion.Euler(currentRotation);
     }
 }
 

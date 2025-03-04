@@ -22,11 +22,9 @@ public class SpawnExtrusions : MonoBehaviour
     void Start()
     {
         numObjects = 1 + (PlayerPrefs.GetInt("Difficulty", 1) / 2);
-        Debug.Log("numObjects: " + numObjects);
         for (int i = 0; i < numObjects; i++)
         {
             int index = Random.Range(0, objectsToSpawn.Count);
-            Debug.Log("index: " + index);
             SpawnObject(index);
         }
     }

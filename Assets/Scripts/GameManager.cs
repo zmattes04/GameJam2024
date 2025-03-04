@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerText;
     private static bool gameOver;
     public static string username;
-    private static DynamicDifficulty dynamicDifficulty;
+    public static DynamicDifficulty dynamicDifficulty;
+    public TMP_Text DifficultyText;
 
     void awake()
     {
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
 
         // Load Settings
         dynamicDifficulty = GetComponent<DynamicDifficulty>();
+        DifficultyText.text = "Difficulty: " + PlayerPrefs.GetInt("Difficulty", 1).ToString();
         board.GetComponent<BoardTilt>().verticalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);
         board.GetComponent<BoardTilt>().horizontalRotationSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 200f);      
         soundEffectSource.volume = PlayerPrefs.GetFloat("GameSFXVolume", 0.3f);
@@ -60,7 +62,6 @@ public class GameManager : MonoBehaviour
         GameObject boardMesh = board.transform.GetChild(0).gameObject;
 
         // Add center holes
-        Debug.Log("center holes: " + PlayerPrefs.GetInt("Difficulty", 1));
         for (int i = 0; i < PlayerPrefs.GetInt("Difficulty", 1); i++)
         {
             int intrusionsIndex = UnityEngine.Random.Range(0, intrusions.Count);
@@ -90,34 +91,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < rampCountCenter; i++)
-        {
-            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
-            boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles);
-        }
-
-
-        for (int i = 0; i < rampCountEdges; i++)
-        {
-            float randomValue = UnityEngine.Random.value;
-            int extrustionIndex = UnityEngine.Random.Range(0, extrusions.Count);
-            if (randomValue < 0.25f)
-            {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, minX_EdgeHoles, minZ, maxZ);
-            }
-            else if (randomValue < 0.5f)
-            {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, maxX_EdgeHoles, maxX, minZ, maxZ);
-            }
-            else if (randomValue < 0.5f)
-            {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, minZ, minZ_EdgeHoles);
-            }
-            else
-            {
-                boardMesh.GetComponent<GenerateHoles>().PerformAddition(boardMesh, extrusions[extrustionIndex], boardScale, minX, maxX, maxZ_EdgeHoles, maxZ);
-            }
-        }
         gameOver = false;
         score = 0;
         gameTimer = 0f;
@@ -133,10 +106,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void UpdateHighScore(int score, TMP_Text highScoreText)
+    public static void UpdateHighScore(int score, TMP_Text highScoreText, TextShake textShake, Color textColor)
     {
         highScore = score;
         highScoreText.text = "High Score: " + highScore;
+        highScoreText.color = textColor;
+        if (score <= 50)
+        {
+            textShake.StartShake(highScoreText, 3, 3);
+        } else
+        {
+            textShake.StartShake(highScoreText, 50, 3);
+        }
+    }
+
+    public static void UpdateScore(int score, TMP_Text scoreText, TextShake textShake, Color textColor)
+    {
+        scoreText.text = "Score: " + score;
+        scoreText.color = textColor;
+        textShake.StartShake(scoreText, 1, 2);
     }
 
     public static void UpdateHighScores()
@@ -184,7 +172,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("HighScoreTime" + i, highScoreTimes[i]);
             PlayerPrefs.SetString("HighScoreName" + i, highScoreNames[i]);
         }
+
         PlayerPrefs.Save();
+
     }
 
     public static void LoadHighScores()

@@ -23,6 +23,9 @@ public class SpawnObstacles : MonoBehaviour
     public int timesBeforeObjectIndexIncrements;
     private int timesCounter;
 
+    public CameraShake cameraShake;
+    public LightingControl lightingControl;
+
     void Start()
     {
         spawnPosition = this.transform;
@@ -62,6 +65,8 @@ public class SpawnObstacles : MonoBehaviour
     private void SpawnObject()
     {
         int numberToSpawn = Random.Range(minSpawnPerInterval, currentMaxSpawnPerInterval);
+        cameraShake.Shake(0.2f + MapIntToFloat(numberToSpawn), MapIntToFloat(numberToSpawn));
+        lightingControl.FlashLights();
 
         for (int i = 1; i <= numberToSpawn; i++)
         {
@@ -73,6 +78,11 @@ public class SpawnObstacles : MonoBehaviour
             Instantiate(objectsList[objectsIndex], spawnPosition.position, Quaternion.identity);
         }
         soundEffectPlayer.PlaySoundEffect(soundEffectType);
+    }
+
+    float MapIntToFloat(int x)
+    {
+        return 0.1f + ((x - 1) / 13f) * (0.9f - 0.1f);
     }
 }
 

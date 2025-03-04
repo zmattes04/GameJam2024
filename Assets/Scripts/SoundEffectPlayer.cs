@@ -26,7 +26,7 @@ public class SoundEffectPlayer : MonoBehaviour
 
     public void PlaySoundEffect(SoundEffectType soundEffect)
     {
-        if (soundEffectSource.isPlaying)
+        /*if (soundEffectSource.isPlaying)
         {
             if ((soundEffect != soundEffectPrevious) || activatedOnce)
             {
@@ -40,7 +40,9 @@ public class SoundEffectPlayer : MonoBehaviour
             soundEffectSource.clip = GetAudioClip(soundEffect);
             soundEffectSource.Play();
         }
-        soundEffectPrevious = soundEffect;
+        soundEffectPrevious = soundEffect;*/
+        soundEffectSource.pitch = Mathf.Clamp(0.7f + (GameManager.score / 500f), 0.7f, 2.0f);
+        soundEffectSource.PlayOneShot(GetAudioClip(soundEffect));
     }
 
     private AudioClip GetAudioClip(SoundEffectType soundEffect)
