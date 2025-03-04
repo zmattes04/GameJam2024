@@ -29,10 +29,13 @@ public class Coin : MonoBehaviour
     private Color currentColor = new Color(1f, 1f, 0f);
     [SerializeField] float colorIncrement;
 
+    public CameraShake cameraShake;
+
     void Start()
     {
         GameManager.UpdateHighScore(GameManager.highScore, highScoreText);
         currentColor = new Color(R, G, B);
+        cameraShake = Camera.main.GetComponent<CameraShake>();
     }
 
     void Update()
@@ -54,6 +57,7 @@ public class Coin : MonoBehaviour
         {
             GameManager.score += scoreIncrement + GameManager.dynamicDifficulty.scoreMultipliers[PlayerPrefs.GetInt("Difficulty", 1) - 1];
             SpawnParticles();
+            cameraShake.Shake(0.5f, 0.3f);
             if (GameManager.score > GameManager.highScore)
             {
                 GameManager.UpdateHighScore(GameManager.score, highScoreText);
