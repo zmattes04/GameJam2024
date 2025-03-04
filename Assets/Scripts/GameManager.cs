@@ -20,9 +20,7 @@ public class GameManager : MonoBehaviour
     public static float[] highScoreTimes = new float[highScoresLength];
     public static string[] highScoreNames = new string[highScoresLength];
     public static int highScore;
-    public static float highScoreAdjusted;
     public static int score;
-    public static float scoreAdjusted;
     public float minX_CenterHoles, maxX_CenterHoles, minZ_CenterHoles, maxZ_CenterHoles;
     public float minX_EdgeHoles, maxX_EdgeHoles, minZ_EdgeHoles, maxZ_EdgeHoles;
     public float minX, maxX, minZ, maxZ;

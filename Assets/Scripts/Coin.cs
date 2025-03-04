@@ -30,6 +30,7 @@ public class Coin : MonoBehaviour
     [SerializeField] float colorIncrement;
 
     public CameraShake cameraShake;
+    public LightingControl lightingControl;
 
     void Start()
     {
@@ -56,6 +57,7 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             GameManager.score += scoreIncrement + GameManager.dynamicDifficulty.scoreMultipliers[PlayerPrefs.GetInt("Difficulty", 1) - 1];
+            lightingControl.FlashLights();
             SpawnParticles();
             cameraShake.Shake(0.5f, 0.3f);
             if (GameManager.score > GameManager.highScore)
