@@ -150,6 +150,15 @@ public class Coin : MonoBehaviour
         {
             Debug.LogWarning("No material found on GameObject Renderer.");
         }
+        TrailRenderer trailRenderer = GetComponent<TrailRenderer>();
+        if (trailRenderer != null && trailRenderer.material != null)
+        {
+            trailRenderer.startColor = currentColor;
+        }
+        else
+        {
+            Debug.LogWarning("No material found on GameObject Renderer.");
+        }
 
         // Spawn random particle effect
         int index = Random.Range(0, particlePrefabs.Count - 1);
