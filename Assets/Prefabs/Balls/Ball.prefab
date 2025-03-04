@@ -128,6 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9818c624b07984abab8ef27e1f475759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTargetPosition: {x: 0, y: 4, z: 0}
+  startMoveDuration: 100
+  startOvershootAmount: 100
+  startOscillationDamping: 0.4
+  delayBeforeStart: 0.5
   dropDelay: 3
   Board: {fileID: 0}
   boardTransform: {fileID: 0}

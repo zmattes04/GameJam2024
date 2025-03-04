@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class SphereMoves : MonoBehaviour
 {
+    public Vector3 startTargetPosition;
+    public float startMoveDuration = 2f;
+    public float startOvershootAmount = 1.5f;
+    public float startOscillationDamping = 0.1f;
+
+    private Vector3 startVelocity = Vector3.zero;
+    private float startElapsedTime = 0f;
+    private bool isStarting = false;
+    public float delayBeforeStart = 1f;
+
     public float dropDelay = 2.0f;
     private Rigidbody rb;
     public GameObject Board;
@@ -21,12 +31,46 @@ public class SphereMoves : MonoBehaviour
         StartCoroutine(DropBallAfterDelay());
         Board = GameObject.FindWithTag("Board");
         boardTransform = Board.transform;
+        StartCoroutine(StartMovementAfterDelay()); // Start coroutine to wait before moving
+    }
+
+    private IEnumerator StartMovementAfterDelay()
+    {
+        // Wait for the specified delay before starting the movement
+        yield return new WaitForSeconds(delayBeforeStart);
+
+        // Begin moving the object
+        isStarting = true;
+    }
+
+    void Update()
+    {
+        // Oscillating effect to start the game
+        if (isStarting)
+        {
+            startElapsedTime += Time.deltaTime;
+
+            // Calculate the fraction of time elapsed (0 to 1)
+            float t = Mathf.Clamp01(startElapsedTime / startMoveDuration);
+
+            // Calculate the overshoot position based on current progress (fraction of the total duration)
+            Vector3 direction = startTargetPosition - transform.position;
+            Vector3 overshotPosition = startTargetPosition + direction.normalized * startOvershootAmount;
+
+            // Move the object smoothly towards the overshot position using smooth damp
+            transform.position = Vector3.SmoothDamp(transform.position, overshotPosition, ref startVelocity, 1f);
+
+            // Apply oscillation back towards the target with decreasing overshoot as time progresses
+            startOvershootAmount *= 1 - startOscillationDamping * t;
+        }
     }
 
 
     private IEnumerator DropBallAfterDelay()
     {
         yield return new WaitForSeconds(dropDelay);
+        transform.position = startTargetPosition;
+        isStarting = false;
         rb.useGravity = true;
     }
 
