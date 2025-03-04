@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4828297341360140991}
   - component: {fileID: 1447775044722486894}
   - component: {fileID: 8815031812962840875}
+  - component: {fileID: 623793499723963854}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Coin
@@ -139,6 +140,8 @@ MonoBehaviour:
   B: 0
   colorIncrement: 0.04
   cameraShake: {fileID: 0}
+  lightingControl: {fileID: 0}
+  textShake: {fileID: 0}
 --- !u!114 &1447775044722486894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,3 +263,15 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &623793499723963854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2754747825902594797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b050b753c5d454f925b0cd1eecc787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

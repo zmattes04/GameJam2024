@@ -31,10 +31,11 @@ public class Coin : MonoBehaviour
 
     public CameraShake cameraShake;
     public LightingControl lightingControl;
+    public TextShake textShake;
 
     void Start()
     {
-        GameManager.UpdateHighScore(GameManager.highScore, highScoreText);
+        GameManager.UpdateHighScore(GameManager.highScore, highScoreText, textShake, currentColor);
         currentColor = new Color(R, G, B);
         cameraShake = Camera.main.GetComponent<CameraShake>();
     }
@@ -62,7 +63,7 @@ public class Coin : MonoBehaviour
             cameraShake.Shake(0.5f, 0.3f);
             if (GameManager.score > GameManager.highScore)
             {
-                GameManager.UpdateHighScore(GameManager.score, highScoreText);
+                GameManager.UpdateHighScore(GameManager.score, highScoreText, textShake, currentColor);
                 PlayerPrefs.SetInt("HighScore", GameManager.score);
                 PlayerPrefs.Save();
             }
@@ -75,7 +76,7 @@ public class Coin : MonoBehaviour
             } while (!AdjustHeightToBoard() || !IsSafePosition(newPosition));
              
             transform.position = newPosition;
-            scoreText.text = "Score: " + GameManager.score;
+            GameManager.UpdateScore(GameManager.score, scoreText, textShake, currentColor);
             soundEffectPlayer.PlaySoundEffect(soundEffectType);
         }
         PlayerPrefs.SetInt("Score", GameManager.score);
@@ -134,7 +135,6 @@ public class Coin : MonoBehaviour
             {
                 psRenderer.sharedMaterial.SetColor("_Color", currentColor);
                 psRenderer.sharedMaterial.SetColor("_EmissionColor", currentColor);
-                Debug.Log(currentColor);
             }
             else
             {

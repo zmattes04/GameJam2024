@@ -106,10 +106,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void UpdateHighScore(int score, TMP_Text highScoreText)
+    public static void UpdateHighScore(int score, TMP_Text highScoreText, TextShake textShake, Color textColor)
     {
         highScore = score;
         highScoreText.text = "High Score: " + highScore;
+        highScoreText.color = textColor;
+        if (score <= 50)
+        {
+            textShake.StartShake(highScoreText, 3, 3);
+        } else
+        {
+            textShake.StartShake(highScoreText, 50, 3);
+        }
+    }
+
+    public static void UpdateScore(int score, TMP_Text scoreText, TextShake textShake, Color textColor)
+    {
+        scoreText.text = "Score: " + score;
+        scoreText.color = textColor;
+        textShake.StartShake(scoreText, 1, 2);
     }
 
     public static void UpdateHighScores()
