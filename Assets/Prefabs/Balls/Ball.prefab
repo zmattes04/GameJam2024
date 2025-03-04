@@ -93,7 +93,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6177888107028260252}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2f7cf1d6f7515c24f898bc631e7efecb, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -132,3 +132,6 @@ MonoBehaviour:
   boardTransform: {fileID: 0}
   raycastDistance: 1
   teleportDistance: 0
+  highYIncrement: 10
+  heightAboveBoard: 0.5
+  boardTag: Board

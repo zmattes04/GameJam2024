@@ -125,6 +125,18 @@ MonoBehaviour:
   highYIncrement: 10
   heightAboveBoard: 0.5
   boardTag: Board
+  scoreIncrement: 10
+  particlePrefabs:
+  - {fileID: 7022268795503775816, guid: 7377f38a94f13bd43924090d4a77f29e, type: 3}
+  - {fileID: 5601036089067188822, guid: 924e772d99fea934f8c7dff7c622e78a, type: 3}
+  - {fileID: 74078499623404262, guid: 9790383d97594f049aecba8cf470e3b7, type: 3}
+  - {fileID: 6146545414153545494, guid: 61753401622c2a947a30e2147430e97d, type: 3}
+  particleDivider: 1000
+  musicSource: {fileID: 0}
+  R: 1
+  G: 1
+  B: 0
+  colorIncrement: 0.04
 --- !u!114 &1447775044722486894
 MonoBehaviour:
   m_ObjectHideFlags: 0

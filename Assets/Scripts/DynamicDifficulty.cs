@@ -7,8 +7,8 @@ public class DynamicDifficulty : MonoBehaviour
     private static List<int> scores = new List<int>(new int[MaxScores]);
     private const int MaxScores = 4;
     private const int numDifficulties = 10;
-    private const float difficultyDivider = 3f;
-    public List<float> scoreMultipliers = new List<float>(new float[numDifficulties]);
+    private const float difficultyDivider = 30f;
+    public List<int> scoreMultipliers = new List<int>(new int[numDifficulties]);
     private int Difficulty;
 
     void Awake()
